@@ -718,7 +718,8 @@ export function decode (buffer: BufferSource) {
 export async function getHash (data: string | Uint8Array) {
 	const content = typeof data === 'string' ? encode(data) : data
 	const buffer = await window.crypto.subtle.digest('SHA-256', content)
-	
+    
+    //@ts-ignore
     return [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('')
 }
 
